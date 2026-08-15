@@ -1,5 +1,5 @@
-import React, { useContext } from 'react'
-import { Outlet } from 'react-router';
+import { useContext } from 'react'
+import { Navigate, Outlet } from 'react-router';
 import { UserContext } from '../app/providers/AuthProvider';
 
 const PublicRoute = () => {

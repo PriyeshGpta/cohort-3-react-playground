@@ -3,9 +3,12 @@ import PublicLayout from "../layouts/PublicLayout";
 import Login from "../pages/public/Login";
 import Register from "../pages/public/Register";
 import PrivateLayout from '../layouts/PrivateLayout';
-import Dashboard from '../pages/private/Dashboard';
+import Home from '../pages/private/Home';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
+import About from "../pages/private/About";
+import Services from "../pages/private/Services";
+import ContactUs from "../pages/private/ContactUs";
 
 const router = createBrowserRouter([
     {
@@ -38,7 +41,19 @@ const router = createBrowserRouter([
                 children: [
                     {
                         path: "",
-                        elements: <Dashboard />
+                        element: <Home />
+                    },
+                    {
+                        path: "about",
+                        element: <About />
+                    },
+                    {
+                        path: "services",
+                        element: <Services />
+                    },
+                    {
+                        path: "contact",
+                        element: <ContactUs />
                     }
                 ]
             },
