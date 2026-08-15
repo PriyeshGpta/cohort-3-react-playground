@@ -1,6 +1,9 @@
 import { NavLink } from "react-router";
+import { useAuthHook } from "../hooks/useAuthHook";
 
 const Navbar = () => {
+    const { handleLogout } = useAuthHook();
+
     const navItems = [
         { name: "Home", path: "/main" },
         { name: "About", path: "/main/about" },
@@ -34,6 +37,15 @@ const Navbar = () => {
                             {item.name}
                         </NavLink>
                     ))}
+                </div>
+
+                <div>
+                    <button
+                        onClick={handleLogout}
+                        className="cursor-pointer rounded-lg border border-red-500/20 bg-red-500/10 px-4 py-2 text-sm font-medium text-red-400 transition-all hover:border-red-500/30 hover:bg-red-500/20 hover:text-red-300 active:scale-[0.9]"
+                    >
+                        Logout
+                    </button>
                 </div>
             </div>
         </nav>

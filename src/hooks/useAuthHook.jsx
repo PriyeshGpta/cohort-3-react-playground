@@ -33,7 +33,7 @@ export const useAuthHook = () => {
             navigate("/main")
             toast.success("Logged in successfully");
         } else {
-            toast.error("User not found! Sign up")
+            toast.error("Invalid Credentials")
         }
         reset();
     }
@@ -54,6 +54,12 @@ export const useAuthHook = () => {
         setShowConfirmPassword((prev) => !prev)
     }
 
+    const handleLogout = () => {
+        localStorage.removeItem('loggedInUser');
+        setLoggedInUser(null);
+        toast.success("Logged out successfully")
+    }
+
     return {
         register,
         handleSubmit,
@@ -65,5 +71,6 @@ export const useAuthHook = () => {
         handleShowConfirmPassword,
         showPassword,
         showConfirmPassword,
+        handleLogout
     }
 }
