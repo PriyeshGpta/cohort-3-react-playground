@@ -1,17 +1,18 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { getAllProducts } from "../api/productsApi";
 
-export const useProductsHook = () => {
+export const useProducts = () => {
     const [products, setProducts] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    const getAllProducts = async () => {
+    const fetchAllProducts = async () => {
         try {
-            const response = await axios.get("https://fakestoreapi.com/products");
-            setProducts(response?.data);
+            const response = await getAllProducts()
+            setProducts(response);
         } catch (error) {
-            console.log("Error fetching products: ", error);
+            console.error("Error fetching products: ", error);
             setError(error)
         } finally {
             setIsLoading(false);
@@ -19,7 +20,7 @@ export const useProductsHook = () => {
     }
 
     useEffect(() => {
-        getAllProducts();
+        fetchAllProducts();
     }, [])
 
     return { products, isLoading, error }

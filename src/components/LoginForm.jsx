@@ -1,5 +1,5 @@
 import { Eye, EyeOff } from 'lucide-react';
-import { useAuthHook } from '../hooks/useAuthHook';
+import { useAuth } from '../hooks/useAuth';
 import { Link } from 'react-router';
 
 const LoginForm = () => {
@@ -9,7 +9,7 @@ const LoginForm = () => {
         errors,
         onSubmitLogin,
         handleShowPassword,
-        showPassword, } = useAuthHook()
+        showPassword, } = useAuth()
 
     return (
         <div className='min-h-screen flex items-center justify-center px-4'>

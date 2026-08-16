@@ -1,8 +1,8 @@
 import ProductCard from "../../components/ProductCard"
-import { useProductsHook } from "../../hooks/useProductsHook"
+import { useProducts } from "../../hooks/useProducts"
 
 const Products = () => {
-    const { products, isLoading, error } = useProductsHook();
+    const { products, isLoading, error } = useProducts();
 
     if (isLoading) {
         return <p className="p-6 text-white">Loading...</p>

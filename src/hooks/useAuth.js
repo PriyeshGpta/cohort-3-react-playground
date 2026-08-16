@@ -5,8 +5,7 @@ import { toast } from "react-toastify";
 import { nanoid } from 'nanoid'
 import { useNavigate } from "react-router";
 
-
-export const useAuthHook = () => {
+export const useAuth = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
     const { users, setUsers, loggedInUser, setLoggedInUser } = useContext(UserContext);
