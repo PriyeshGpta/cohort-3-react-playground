@@ -1,24 +1,16 @@
 import ProductCard from "../../components/ProductCard"
+import { useProductsHook } from "../../hooks/useProductsHook"
 
 const Products = () => {
-    const products = [
-        {
-            id: 0,
-            title: "Product One",
-            price: 29.99,
-            description: "This is a sample product description.",
-            category: "electronics",
-            image: "https://via.placeholder.com/400",
-        },
-        {
-            id: 1,
-            title: "Product Two",
-            price: 49.99,
-            description: "Another sample product description.",
-            category: "clothing",
-            image: "https://via.placeholder.com/400",
-        },
-    ]
+    const { products, isLoading, error } = useProductsHook();
+
+    if (isLoading) {
+        return <p className="p-6 text-white">Loading...</p>
+    }
+
+    if (error) {
+        return <p className="p-6 text-red-400">Error fetching products: {error.message} </p>
+    }
 
     return (
         <section className="p-6">
