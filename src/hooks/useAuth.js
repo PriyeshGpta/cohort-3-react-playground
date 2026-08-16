@@ -1,12 +1,12 @@
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
-import { UserContext } from "../app/providers/AuthProvider";
+import { UserContext } from "../app/providers/AuthContextProvider";
 import { toast } from "react-toastify";
 import { nanoid } from 'nanoid'
 import { useNavigate } from "react-router";
 
 
-export const useAuthHook = () => {
+export const useAuth = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
     const { users, setUsers, loggedInUser, setLoggedInUser } = useContext(UserContext);
@@ -35,7 +35,6 @@ export const useAuthHook = () => {
         } else {
             toast.error("Invalid Credentials")
         }
-        reset();
     }
 
     const onSubmitRegister = (values) => {

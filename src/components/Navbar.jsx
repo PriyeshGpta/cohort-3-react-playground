@@ -1,8 +1,8 @@
 import { NavLink } from "react-router";
-import { useAuthHook } from "../hooks/useAuthHook";
+import { useAuth } from "../hooks/useAuth";
 
 const Navbar = () => {
-    const { handleLogout } = useAuthHook();
+    const { handleLogout } = useAuth();
 
     const navItems = [
         { name: "Home", path: "/main" },

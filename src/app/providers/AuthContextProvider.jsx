@@ -4,7 +4,7 @@ import { createContext, useState } from "react"
 export const UserContext = createContext();
 
 // Make a ProviderWrapper which will wrap the entire App, and will share the data across all components.
-export const AuthProvider = ({ children }) => {
+export const AuthContextProvider = ({ children }) => {
     const [loggedInUser, setLoggedInUser] = useState(
         () => JSON.parse(localStorage.getItem("loggedInUser")) || null
     );
