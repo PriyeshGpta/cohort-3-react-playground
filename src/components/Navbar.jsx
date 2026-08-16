@@ -13,7 +13,7 @@ const Navbar = () => {
 
     return (
         <nav className="border-b border-slate-800 bg-slate-950/80">
-            <div className="w-full flex h-16 items-center justify-between px-6">
+            <div className="mx-auto max-w-7xl flex h-16 items-center justify-between px-6">
                 <NavLink
                     to="/main"
                     className="text-xl font-bold tracking-tight text-white"
