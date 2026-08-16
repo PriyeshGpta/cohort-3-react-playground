@@ -7,7 +7,7 @@ import Home from '../pages/private/Home';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
 import About from "../pages/private/About";
-import Services from "../pages/private/Services";
+import Products from "../pages/private/Products";
 import ContactUs from "../pages/private/ContactUs";
 
 const router = createBrowserRouter([
@@ -48,8 +48,8 @@ const router = createBrowserRouter([
                         element: <About />
                     },
                     {
-                        path: "services",
-                        element: <Services />
+                        path: "products",
+                        element: <Products />
                     },
                     {
                         path: "contact",
