@@ -34,7 +34,6 @@ export const useAuth = () => {
         } else {
             toast.error("Invalid Credentials")
         }
-        reset();
     }
 
     const onSubmitRegister = (values) => {
