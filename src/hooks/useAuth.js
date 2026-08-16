@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
-import { UserContext } from "../app/providers/AuthProvider";
+import { UserContext } from "../app/providers/AuthContextProvider";
 import { toast } from "react-toastify";
 import { nanoid } from 'nanoid'
 import { useNavigate } from "react-router";
