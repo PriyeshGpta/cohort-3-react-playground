@@ -3,7 +3,7 @@ const ProductCard = ({ product }) => {
         <article className="overflow-hidden rounded-xl border border-slate-800 bg-slate-900 transition hover:border-slate-700 hover:bg-slate-800/80">
             <div className="aspect-square overflow-hidden bg-slate-800">
                 <img
-                    src={product.image}
+                    src={product.images[0]}
                     alt={product.title}
                     className="h-full w-full object-cover transition duration-300 hover:scale-105"
                 />

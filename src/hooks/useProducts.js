@@ -10,7 +10,7 @@ export const useProducts = () => {
     const fetchAllProducts = async () => {
         try {
             const response = await getAllProducts()
-            setProducts(response);
+            setProducts(response?.products);
         } catch (error) {
             console.error("Error fetching products: ", error.message);
             setError(error.message)
