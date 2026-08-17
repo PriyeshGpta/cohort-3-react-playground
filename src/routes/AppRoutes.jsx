@@ -8,6 +8,8 @@ import PublicRoute from './PublicRoute';
 import About from "../pages/private/About";
 import Products from "../pages/private/Products";
 import ContactUs from "../pages/private/ContactUs";
+import { useAuth } from "../hooks/useAuth";
+import { useEffect } from "react";
 
 const router = createBrowserRouter([
     {
@@ -57,6 +59,14 @@ const router = createBrowserRouter([
 ])
 
 const AppRoutes = () => {
+    const { hydrateUser, isLoading } = useAuth()
+
+    useEffect(() => {
+        hydrateUser();
+    }, [])
+
+    if (isLoading) return <p className='h-screen w-screen bg-slate-950 text-white flex items-center justify-center'>Loading...</p>
+
     return <RouterProvider router={router} />
 }
 

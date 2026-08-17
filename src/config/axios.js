@@ -1,12 +1,23 @@
 import axios from "axios";
 
 const api = axios.create({
-    baseURL: "https://fakestoreapi.com",
+    baseURL: "https://dummyjson.com",
     timeout: 5000,
     headers: {
         "Content-Type": "application/json"
     }
 })
+
+api.interceptors.request.use(
+    (config) => {
+        const accessToken = localStorage.getItem("accessToken")
+        if (accessToken) config.headers.Authorization = `Bearer ${accessToken}`;
+        return config;
+    },
+    (error) => {
+        return Promise.reject(error);
+    }
+)
 
 api.interceptors.response.use(
     (response) => {

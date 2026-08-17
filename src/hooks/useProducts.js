@@ -12,8 +12,8 @@ export const useProducts = () => {
             const response = await getAllProducts()
             setProducts(response);
         } catch (error) {
-            console.error("Error fetching products: ", error);
-            setError(error)
+            console.error("Error fetching products: ", error.message);
+            setError(error.message)
         } finally {
             setIsLoading(false);
         }

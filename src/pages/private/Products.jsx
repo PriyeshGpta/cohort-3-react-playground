@@ -4,13 +4,9 @@ import { useProducts } from "../../hooks/useProducts"
 const Products = () => {
     const { products, isLoading, error } = useProducts();
 
-    if (isLoading) {
-        return <p className="p-6 text-white">Loading...</p>
-    }
+    if (isLoading) return <p className='h-full w-full bg-slate-950 text-white flex items-center justify-center'>Loading...</p>
 
-    if (error) {
-        return <p className="p-6 text-red-400">Error fetching products: {error.message} </p>
-    }
+    if (error) return <p className="p-6 text-red-400">Error fetching products: {error.message} </p>
 
     return (
         <section className="p-6">
