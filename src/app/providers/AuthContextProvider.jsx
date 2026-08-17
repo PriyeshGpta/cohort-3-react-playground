@@ -5,13 +5,10 @@ export const UserContext = createContext();
 
 // Make a ProviderWrapper which will wrap the entire App, and will share the data across all components.
 export const AuthContextProvider = ({ children }) => {
-    const [loggedInUser, setLoggedInUser] = useState(
-        () => JSON.parse(localStorage.getItem("loggedInUser")) || null
-    );
-    const [users, setUsers] = useState(() => JSON.parse(localStorage.getItem("users")) || []);
+    const [loggedInUser, setLoggedInUser] = useState(null);
 
     return (
-        <UserContext.Provider value={{ loggedInUser, setLoggedInUser, users, setUsers }}>
+        <UserContext.Provider value={{ loggedInUser, setLoggedInUser }}>
             {children}
         </UserContext.Provider>)
 }

@@ -70,8 +70,6 @@ const LoginForm = () => {
                     >
                         Login
                     </button>
-
-                    <p className="text-white text-center text-[0.9rem]">Don't have an account?  <Link to="/register" className="text-blue-500 underline">Sign up</Link></p>
                 </div>
             </form>
         </div>
