@@ -1,13 +1,15 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { UserContext } from "../app/providers/AuthContextProvider";
 import { toast } from "react-toastify";
 import { nanoid } from 'nanoid'
+import { useDispatch, useSelector } from "react-redux";
+import { setUsers, setLoggedInUser } from "../app/redux/slices/authSlice";
 
 export const useAuth = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-    const { users, setUsers, loggedInUser, setLoggedInUser } = useContext(UserContext);
+    const dispatch = useDispatch();
+    const users = useSelector((state) => state.auth.users);
 
     const {
         register,
@@ -20,12 +22,13 @@ export const useAuth = () => {
     })
 
     const onSubmitLogin = ({ email, password }) => {
+        console.log(users)
         const hasSignedUp = users.find((user) => {
             return email === user.email && password === user.password;
         })
         if (hasSignedUp) {
             const activeUser = { email, password };
-            setLoggedInUser(activeUser);
+            dispatch(setLoggedInUser(activeUser))
             localStorage.setItem("loggedInUser", JSON.stringify(activeUser));
             toast.success("Logged in successfully");
         } else {
@@ -35,7 +38,7 @@ export const useAuth = () => {
 
     const onSubmitRegister = (values) => {
         const updatedUsers = [...users, { id: nanoid(), ...values }];
-        setUsers(updatedUsers);
+        dispatch(setUsers(updatedUsers));
         localStorage.setItem("users", JSON.stringify(updatedUsers));
         toast.success("Signed up successfully");
         reset();
@@ -51,7 +54,7 @@ export const useAuth = () => {
 
     const handleLogout = () => {
         localStorage.removeItem('loggedInUser');
-        setLoggedInUser(null);
+        dispatch(setLoggedInUser(null));
         toast.success("Logged out successfully")
     }
 

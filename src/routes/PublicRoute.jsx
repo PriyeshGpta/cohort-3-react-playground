@@ -1,9 +1,8 @@
-import { useContext } from 'react'
+import { useSelector } from 'react-redux';
 import { Navigate, Outlet } from 'react-router';
-import { UserContext } from '../app/providers/AuthContextProvider';
 
 const PublicRoute = () => {
-    const { loggedInUser, setLoggedInUser } = useContext(UserContext);
+    const loggedInUser = useSelector((state) => state.auth.loggedInUser);
     if (loggedInUser) return <Navigate to={"/main"} />
     return <Outlet />
 }
