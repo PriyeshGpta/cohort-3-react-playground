@@ -12,14 +12,13 @@ export const useAuth = () => {
     const {
         register,
         handleSubmit,
-        reset,
         formState: { errors },
     } = useForm({
         mode: 'onChange'
     })
 
     const onSubmitLogin = async (values) => {
-        setIsLoading(true)
+        setIsLoading(true);
         try {
             const response = await loginUser(values);
             const { accessToken, refreshToken, ...rest } = response;
