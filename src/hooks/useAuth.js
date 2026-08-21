@@ -22,7 +22,6 @@ export const useAuth = () => {
     })
 
     const onSubmitLogin = ({ email, password }) => {
-        console.log(users)
         const hasSignedUp = users.find((user) => {
             return email === user.email && password === user.password;
         })
