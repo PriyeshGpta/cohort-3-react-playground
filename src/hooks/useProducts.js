@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { getAllProducts } from "../api/productsApi";
 
@@ -12,8 +11,8 @@ export const useProducts = () => {
             const response = await getAllProducts()
             setProducts(response?.products);
         } catch (error) {
-            console.error("Error fetching products: ", error.message);
-            setError(error.message)
+            console.error("Error fetching products: ", error.response.data.message);
+            setError(error.response.data.message)
         } finally {
             setIsLoading(false);
         }

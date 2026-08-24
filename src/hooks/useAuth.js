@@ -7,12 +7,11 @@ import { getLoggedInUser, loginUser } from "../api/authApi";
 export const useAuth = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
-    const { loggedInUser, setLoggedInUser } = useContext(UserContext);
+    const { setLoggedInUser } = useContext(UserContext);
 
     const {
         register,
         handleSubmit,
-        reset,
         formState: { errors },
     } = useForm({
         mode: 'onChange'
@@ -28,7 +27,7 @@ export const useAuth = () => {
             setLoggedInUser({ ...rest });
             toast.success("Logged in successfully")
         } catch (error) {
-            toast.error(error.message);
+            toast.error(error.response.data.message);
         } finally {
             setIsLoading(false);
         }
@@ -44,7 +43,7 @@ export const useAuth = () => {
             const response = await getLoggedInUser();
             setLoggedInUser(response)
         } catch (error) {
-            console.log("Error hydrating users: ", error.message);
+            console.log("Error hydrating users: ", error.response.data.message);
         } finally {
             setIsLoading(false);
         }
