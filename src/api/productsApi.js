@@ -1,9 +1,9 @@
-import api from "../config/axios"
+import api from "../config/api";
 
-export const getAllProducts = async (limit, skip) => {
+export const getAllProducts = async (pageParam, limit) => {
     const params = new URLSearchParams({
         limit,
-        skip,
+        skip: pageParam
     });
     const response = await api.get(`/products/search?${params}`);
     return response;

@@ -1,5 +1,6 @@
 import { Eye, EyeOff } from 'lucide-react';
 import { useAuth } from '../hooks/useAuth';
+import SpinnerLoader from './SpinnerLoader';
 
 const LoginForm = () => {
 
@@ -69,7 +70,7 @@ const LoginForm = () => {
                         className='w-full py-2 bg-blue-600 hover:bg-blue-500 active:bg-blue-700 active:scale-98 text-white font-semibold rounded-lg transition-all cursor-pointer flex justify-center'
                     >
                         {
-                            isLoading ? <div className="h-5 w-5 animate-spin rounded-full border-2 border-white border-t-transparent" />
+                            isLoading ? <SpinnerLoader />
                                 : "Login"
                         }
                     </button>
