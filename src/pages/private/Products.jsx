@@ -6,7 +6,7 @@ const Products = () => {
 
     if (isLoading) return <p className='bg-slate-950 text-white pt-6 flex justify-center'>Loading...</p>
 
-    if (error) return <p className="p-6 text-red-400">Error fetching products: {error.message} </p>
+    if (error) return <p className="p-6 text-red-400">Error fetching products: {error.response.data.message} </p>
 
     return (
         <section className="p-6">
