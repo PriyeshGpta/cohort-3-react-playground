@@ -8,7 +8,7 @@ import { nanoid } from 'nanoid'
 export const useAuth = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-    const { users, setUsers, loggedInUser, setLoggedInUser } = useContext(UserContext);
+    const { users, setUsers, setLoggedInUser } = useContext(UserContext);
 
     const {
         register,
