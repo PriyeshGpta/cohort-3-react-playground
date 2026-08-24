@@ -1,6 +1,5 @@
 import { Eye, EyeOff } from 'lucide-react';
 import { useAuth } from '../hooks/useAuth';
-import { Link } from 'react-router';
 
 const LoginForm = () => {
 
@@ -9,7 +8,8 @@ const LoginForm = () => {
         errors,
         onSubmitLogin,
         handleShowPassword,
-        showPassword, } = useAuth()
+        showPassword,
+        isLoading } = useAuth()
 
     return (
         <div className='min-h-screen flex items-center justify-center px-4'>
@@ -21,19 +21,19 @@ const LoginForm = () => {
 
                     <div>
                         <label className='block text-sm font-medium text-slate-300 mb-2'>
-                            Email
+                            User Name
                         </label>
                         <input
-                            {...register("email", {
-                                required: "Email is required",
+                            {...register("username", {
+                                required: "User name is required",
                             })}
-                            type='email'
-                            placeholder='Enter email...'
+                            type='text'
+                            placeholder='Enter username...'
                             className='w-full p-2 bg-slate-800 text-white placeholder-slate-500 border border-slate-700 rounded-lg outline-none transition focus:border-blue-500'
                         />
-                        {errors.email && (
+                        {errors.username && (
                             <p className='text-red-400 text-sm mt-2'>
-                                {errors.email.message}
+                                {errors.username.message}
                             </p>
                         )}
                     </div>
@@ -66,12 +66,14 @@ const LoginForm = () => {
 
                     <button
                         type='submit'
-                        className='w-full py-2 bg-blue-600 hover:bg-blue-500 active:bg-blue-700 active:scale-98 text-white font-semibold rounded-lg transition-all cursor-pointer'
+                        className='w-full py-2 bg-blue-600 hover:bg-blue-500 active:bg-blue-700 active:scale-98 text-white font-semibold rounded-lg transition-all cursor-pointer flex justify-center'
                     >
-                        Login
+                        {
+                            isLoading ? <div className="h-5 w-5 animate-spin rounded-full border-2 border-white border-t-transparent" />
+                                : "Login"
+                        }
                     </button>
 
-                    <p className="text-white text-center text-[0.9rem]">Don't have an account?  <Link to="/register" className="text-blue-500 underline">Sign up</Link></p>
                 </div>
             </form>
         </div>

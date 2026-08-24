@@ -1,14 +1,15 @@
 import { createBrowserRouter, RouterProvider } from "react-router";
 import PublicLayout from "../layouts/PublicLayout";
 import Login from "../pages/public/Login";
-import Register from "../pages/public/Register";
 import PrivateLayout from '../layouts/PrivateLayout';
 import Home from '../pages/private/Home';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
 import About from "../pages/private/About";
-import Services from "../pages/private/Services";
+import Products from "../pages/private/Products";
 import ContactUs from "../pages/private/ContactUs";
+import { useAuth } from "../hooks/useAuth";
+import { useEffect } from "react";
 
 const router = createBrowserRouter([
     {
@@ -23,10 +24,6 @@ const router = createBrowserRouter([
                         path: "",
                         element: <Login />
                     },
-                    {
-                        path: "register",
-                        element: <Register />
-                    }
                 ]
             },
         ],
@@ -48,8 +45,8 @@ const router = createBrowserRouter([
                         element: <About />
                     },
                     {
-                        path: "services",
-                        element: <Services />
+                        path: "products",
+                        element: <Products />
                     },
                     {
                         path: "contact",
@@ -62,6 +59,14 @@ const router = createBrowserRouter([
 ])
 
 const AppRoutes = () => {
+    const { hydrateUser, isLoading } = useAuth()
+
+    useEffect(() => {
+        hydrateUser();
+    }, [])
+
+    if (isLoading) return <p className='h-screen w-screen bg-slate-950 text-white flex items-center justify-center'>Loading...</p>
+
     return <RouterProvider router={router} />
 }
 
