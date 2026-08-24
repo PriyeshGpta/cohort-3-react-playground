@@ -43,7 +43,7 @@ export const useAuth = () => {
             const response = await getLoggedInUser();
             setLoggedInUser(response)
         } catch (error) {
-            console.log("Error hydrating users: ", error.response.data.message);
+            console.log("Error hydrating user: ", error.response.data.message);
         } finally {
             setIsLoading(false);
         }
