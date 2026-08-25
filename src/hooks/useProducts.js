@@ -23,6 +23,7 @@ export const useProducts = () => {
 
             return skip;
         },
+        refetchOnWindowFocus: false,
     })
 
     const productsData = data?.pages?.flatMap((res) => res?.products)
